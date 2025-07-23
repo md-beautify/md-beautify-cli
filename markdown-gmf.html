@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown 美化示例 - GitHub 风格</title>
+  <link rel="stylesheet" href="md-beautify.css">
+  <style>
+  </style>
+</head>
+<body>
+  <div class="md-beautify">
+    <h1><span class="prefix"></span><span class="content">一级标题</span><span class="suffix"></span></h1>
+    
+    <h2><span class="prefix"></span><span class="content">二级标题</span><span class="suffix"></span></h2>
+    
+    <h3><span class="prefix"></span><span class="content">三级标题</span><span class="suffix"></span></h3>
+    
+    <ul>
+      <li><section>无序列表 1</section></li>
+      <li>
+        <section>
+          无序列表 2
+          <ul>
+            <li>
+              <section>
+                无序列表 2.1
+                <ul>
+                  <li><section>2.1.1</section></li>
+                  <li><section>2.1.2</section></li>
+                </ul>
+              </section>
+            </li>
+            <li><section>无序列表 2.2</section></li>
+          </ul>
+        </section>
+      </li>
+    </ul>
+    
+    <ol>
+      <li>
+        <section>
+          有序列表 1<br>
+          1.1 c<br>
+          1.2 c<br>
+          &nbsp;&nbsp;1.2.1 a<br>
+          &nbsp;&nbsp;1.2.2 b
+        </section>
+      </li>
+      <li><section>有序列表 2</section></li>
+      <li><section>有序列表 3</section></li>
+    </ol>
+    
+    <p>一级引用如下：</p>
+    
+    <blockquote>
+      <h3><span class="prefix"></span><span class="content">一级引用示例</span><span class="suffix"></span></h3>
+      <p>读一本好书。 <strong>——歌德</strong></p>
+      <blockquote>
+        <p>what you are you do not see</p>
+        <blockquote>
+          <p>what you see is what I want you to see</p>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+    
+    <p><strong>这个是粗体</strong></p>
+    
+    <p><em>这个是斜体</em></p>
+    
+    <p><em><strong>这个是粗体加斜体</strong></em></p>
+    
+    <p><a href="https://mp.weixin.qq.com/s/lM808MxUu6tp8zU8SBu3sg">Markdown Nice最全功能介绍</a></p>
+    
+    <p>图片还可以和链接嵌套使用，能够实现推荐卡片的效果，用法如下：</p>
+    
+    <figure>
+      <a href="https://mp.weixin.qq.com/s/lM808MxUu6tp8zU8SBu3sg">
+        <img src="https://files.mdnice.com/dance.gif" alt="Markdown Nice 最全功能介绍">
+      </a>
+      <figcaption>Markdown Nice 最全功能介绍</figcaption>
+    </figure>
+    
+    <hr>
+    
+    <p><del>这是要被删除的内容。</del></p>
+    
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align: left">姓名</th>
+            <th style="text-align: center">年龄</th>
+            <th style="text-align: right">工作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: left">小可爱</td>
+            <td style="text-align: center">18</td>
+            <td style="text-align: right">吃可爱多</td>
+          </tr>
+          <tr>
+            <td style="text-align: left">小小勇敢</td>
+            <td style="text-align: center">20</td>
+            <td style="text-align: right">爬棵勇敢树</td>
+          </tr>
+          <tr>
+            <td style="text-align: left">小小小机智</td>
+            <td style="text-align: center">22</td>
+            <td style="text-align: right">看一本机智书</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <figure>
+      <img src="https://files.mdnice.com/pic/cd3ca20c-896f-4cfc-9bdd-c4c58e69ba26.jpg" alt="这里写图片描述">
+      <figcaption>这里写图片描述</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="https://files.mdnice.com/logo.png" alt="同时设置宽度和高度" width="150" height="150">
+      <figcaption>同时设置宽度和高度</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="https://files.mdnice.com/logo.png" alt="只设置宽度，推荐使用百分比" width="40%">
+      <figcaption>只设置宽度，推荐使用百分比</figcaption>
+    </figure>
+    
+    <p><a href="#" title="什么是全栈工程师">全栈工程师</a></p>
+    
+    <pre><code class="language-java">// FileName: HelloWorld.java
+public class HelloWorld {
+  // Java 入口程序，程序从此入口
+  public static void main(String[] args) {
+    System.out.println("Hello,World!"); // 向控制台打印一条语句
+  }
+}</code></pre>
+    
+    <p>支持以下语言种类：</p>
+    
+    <pre><code>bash
+clojure，cpp，cs，css
+dart，dockerfile, diff
+erlang
+go，gradle，groovy
+haskell
+java，javascript，json，julia
+kotlin
+lisp，lua
+makefile，markdown，matlab
+objectivec
+perl，php，python
+r，ruby，rust
+scala，shell，sql，swift
+tex，typescript
+verilog，vhdl
+xml
+yaml</code></pre>
+    
+    <p>diff 效果：</p>
+    
+    <pre><code class="language-diff">+ 新增项
+- 删除项</code></pre>
+    
+    <p>行内公式：<span class="math-inline">\ce{Hg^2+ ->[I-] HgI2 ->[I-] [Hg^{II}I4]^2-}</span></p>
+    
+    <p><span class="math-block">H(D_2) = -\left(\frac{2}{4}\log_2 \frac{2}{4} + \frac{2}{4}\log_2 \frac{2}{4}\right) = 1</span></p>
+    
+    <div id="toc">
+      <h2><span class="prefix"></span><span class="content">目录</span><span class="suffix"></span></h2>
+      <ul>
+        <li><a href="#一级标题">一级标题</a>
+          <ul>
+            <li><a href="#二级标题">二级标题</a>
+              <ul>
+                <li><a href="#三级标题">三级标题</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    
+    <h2><span class="prefix"></span><span class="content">二级标题</span><span class="suffix"></span></h2>
+    
+    <h3><span class="prefix"></span><span class="content">三级标题</span><span class="suffix"></span></h3>
+    
+    <p>Markdown Nice 这么好用，简直是喜大普奔呀！</p>
+    
+    <figure>
+      <div style="display: flex; justify-content: space-between;">
+        <img src="https://files.mdnice.com/blue.jpg" alt="蓝1" style="width: 32%;">
+        <img src="https://files.mdnice.com/green.jpg" alt="绿2" style="width: 32%;">
+        <img src="https://files.mdnice.com/red.jpg" alt="红3" style="width: 32%;">
+      </div>
+    </figure>
+    
+    <div class="block-1">
+      <h3><span class="prefix"></span><span class="content">容器块 1 示例</span><span class="suffix"></span></h3>
+      <blockquote>
+        <p>读一本好书，就是在和高尚的人谈话。 <strong>——歌德</strong></p>
+      </blockquote>
+    </div>
+    
+    <div class="block-2">
+      <h3><span class="prefix"></span><span class="content">容器块 2 示例</span><span class="suffix"></span></h3>
+      <blockquote>
+        <p>读一本好书，就是在和高尚的人谈话。 <strong>——歌德</strong></p>
+      </blockquote>
+    </div>
+    
+    <div class="block-3">
+      <h3><span class="prefix"></span><span class="content">容器块 3 示例</span><span class="suffix"></span></h3>
+      <blockquote>
+        <p>读一本好书，就是在和高尚的人谈话。 <strong>——歌德</strong></p>
+      </blockquote>
+    </div>
+    
+    <div class="column">
+      <div class="column-left" style="flex: 1;">
+        <p><strong>左边的内容</strong></p>
+        <figure>
+          <img src="https://files.mdnice.com/blue.jpg" alt="左边的图片">
+        </figure>
+      </div>
+      <div class="column-right" style="flex: 1;">
+        <p><strong>右边的内容</strong></p>
+        <figure>
+          <img src="https://files.mdnice.com/green.jpg" alt="右边的图片">
+        </figure>
+      </div>
+    </div>
+    
+    <p>设置百分比示例如下：</p>
+    
+    <div class="column">
+      <div class="column-left" style="flex: 3;">
+        <p><strong>左边的内容</strong></p>
+        <figure>
+          <img src="https://files.mdnice.com/blue.jpg" alt="左边的图片">
+        </figure>
+      </div>
+      <div class="column-right" style="flex: 7;">
+        <p><strong>右边的内容</strong></p>
+        <figure>
+          <img src="https://files.mdnice.com/green.jpg" alt="右边的图片">
+        </figure>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- 可选：添加数学公式支持 -->
+  <script>
+    // 如果需要支持数学公式，可以引入 KaTeX 或 MathJax
+    // 这里只是一个示例，实际使用时需要引入相应的库
+    document.addEventListener('DOMContentLoaded', function() {
+      // 检查是否有数学公式元素
+      const hasMathElements = document.querySelectorAll('.math-inline, .math-block').length > 0;
+      
+      if (hasMathElements) {
+        // 如果有数学公式，可以动态加载 KaTeX 或 MathJax
+        console.log('页面包含数学公式，需要引入数学公式渲染库');
+        // 这里可以添加加载 KaTeX 或 MathJax 的代码
+      }
+    });
+  </script>
+</body>
+</html>

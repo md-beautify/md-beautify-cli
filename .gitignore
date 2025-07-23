@@ -1,0 +1,7 @@
+local
+*.local
+dist
+node_modules
+
+*.log
+*.error

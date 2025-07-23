@@ -1,0 +1,1196 @@
+.md-beautify {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.03) 0%, rgba(255, 255, 255, 0) 11.49%), linear-gradient(360deg, rgba(50, 0, 0, 0.04) 0%, rgba(255, 255, 255, 0) 12.16%);
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat, repeat;
+  background-size: 20px 20px, 20px 20px;
+  width: auto;
+  font-family: Optima, PingFangSC-light, serif;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  line-height: 1.5em;
+  word-spacing: 0em;
+  letter-spacing: 0em;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  text-align: left;
+}
+
+.md-beautify h1 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  display: flex;
+}
+
+.md-beautify h1 .prefix {
+  display: none;
+}
+
+.md-beautify h1 .content {
+  font-size: 24px;
+  color: rgb(64, 184, 250);
+  line-height: 1.5em;
+  letter-spacing: 0em;
+  font-weight: bold;
+  display: block;
+}
+
+.md-beautify h1 .suffix {
+  display: none;
+}
+
+.md-beautify h2 {
+  border-bottom-color: rgb(64, 184, 250);
+  margin-top: 30px;
+  margin-bottom: 15px;
+  margin-left: 0px;
+  margin-right: 0px;
+  align-items: unset;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: transparent;
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  border-top-style: none;
+  border-bottom-style: solid;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-width: 1px;
+  border-bottom-width: 4px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: rgb(0, 0, 0);
+  border-left-color: rgb(0, 0, 0);
+  border-right-color: rgb(0, 0, 0);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  box-shadow: none;
+  display: block;
+  flex-direction: unset;
+  float: unset;
+  height: auto;
+  justify-content: unset;
+  line-height: 1.5em;
+  overflow-x: unset;
+  overflow-y: unset;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  position: relative;
+  text-align: left;
+  text-shadow: none;
+  transform: none;
+  width: auto;
+  -webkit-box-reflect: unset;
+}
+
+.md-beautify h2 .prefix {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: transparent;
+  background-image: url('https://files.mdnice.com/fullstack-1.png');
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  align-items: unset;
+  border-top-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: rgb(0, 0, 0);
+  border-bottom-color: rgb(0, 0, 0);
+  border-left-color: rgb(0, 0, 0);
+  border-right-color: rgb(0, 0, 0);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  box-shadow: none;
+  color: rgb(0, 0, 0);
+  display: flex;
+  font-size: 22px;
+  font-weight: bold;
+  flex-direction: unset;
+  float: unset;
+  justify-content: unset;
+  letter-spacing: 0px;
+  line-height: 1.5em;
+  margin-top: 0px;
+  margin-bottom: -25px;
+  margin-left: 0px;
+  margin-right: 0px;
+  overflow-x: unset;
+  overflow-y: unset;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  position: relative;
+  text-align: left;
+  text-indent: 0em;
+  text-shadow: none;
+  transform: none;
+  -webkit-box-reflect: unset;
+}
+
+.md-beautify h2 .content {
+  font-size: 20px;
+  color: rgb(64, 184, 250);
+  line-height: 1.5em;
+  letter-spacing: 0em;
+  padding: 0px;
+  align-items: unset;
+  background: none 0% 0% / auto no-repeat scroll padding-box border-box transparent;
+  border-style: none;
+  border-width: 1px;
+  border-color: rgb(0, 0, 0);
+  border-radius: 0px;
+  box-shadow: none;
+  content: unset;
+  display: flex;
+  font-weight: bold;
+  flex-direction: unset;
+  float: unset;
+  height: auto;
+  justify-content: unset;
+  margin: 0px 0px 0px 25px;
+  overflow: unset;
+  position: relative;
+  text-align: left;
+  text-indent: 0em;
+  text-shadow: none;
+  transform: none;
+  width: auto;
+  -webkit-box-reflect: unset;
+}
+
+.md-beautify h2 .suffix {
+  background-color: rgba(64, 184, 250, 0.5);
+  align-items: unset;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  border-top-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: rgb(0, 0, 0);
+  border-bottom-color: rgb(0, 0, 0);
+  border-left-color: rgb(0, 0, 0);
+  border-right-color: rgb(0, 0, 0);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  box-shadow: none;
+  color: rgb(0, 0, 0);
+  display: flex;
+  font-size: 22px;
+  font-weight: bold;
+  flex-direction: unset;
+  float: right;
+  height: 10px;
+  justify-content: unset;
+  letter-spacing: 0px;
+  line-height: 1.5em;
+  margin-top: -10px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  overflow-x: unset;
+  overflow-y: unset;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  position: relative;
+  text-align: left;
+  text-indent: 0em;
+  text-shadow: none;
+  transform: none;
+  width: 200px;
+  -webkit-box-reflect: unset;
+}
+
+.md-beautify h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-top-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: rgb(0, 0, 0);
+  border-bottom-color: rgb(0, 0, 0);
+  border-left-color: rgb(0, 0, 0);
+  border-right-color: rgb(0, 0, 0);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: transparent;
+  /* background-image: url('https://files.mdnice.com/fullstack-2.png'); */
+  background-origin: padding-box;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-repeat: no-repeat;
+  /* background-size: 30px 30px; */
+  width: auto;
+  height: auto;
+  align-items: unset;
+  box-shadow: none;
+  display: flex;
+  flex-direction: unset;
+  float: unset;
+  justify-content: center;
+  line-height: 1.5em;
+  overflow-x: unset;
+  overflow-y: unset;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  position: relative;
+  text-align: left;
+  text-shadow: none;
+  transform: none;
+  -webkit-box-reflect: unset;
+}
+
+.md-beautify h3 .prefix {
+  display: none;
+}
+
+.md-beautify h3 .content {
+  font-size: 18px;
+  color: rgb(43, 43, 43);
+  line-height: 2.4em;
+  letter-spacing: 0em;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  align-items: unset;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: transparent;
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  border-top-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: rgb(0, 0, 0);
+  border-bottom-color: rgb(0, 0, 0);
+  border-left-color: rgb(0, 0, 0);
+  border-right-color: rgb(0, 0, 0);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  box-shadow: none;
+  display: inline-block;
+  font-weight: bold;
+  flex-direction: unset;
+  float: unset;
+  height: 38px;
+  justify-content: unset;
+  margin-left: 0px;
+  margin-right: 0px;
+  overflow-x: unset;
+  overflow-y: unset;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  position: relative;
+  text-align: center;
+  text-indent: 0em;
+  text-shadow: none;
+  transform: none;
+  width: auto;
+  -webkit-box-reflect: unset;
+}
+
+.md-beautify h3 .suffix {
+  display: none;
+}
+
+.md-beautify ul {
+  list-style-type: disc;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 25px;
+  padding-right: 0px;
+  color: rgb(0, 0, 0);
+}
+
+.md-beautify ul li section {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: rgb(89, 89, 89);
+  font-size: 14px;
+  line-height: 1.8em;
+  letter-spacing: 0.02em;
+  text-align: left;
+  font-weight: normal;
+}
+
+/* 多级列表样式 */
+.md-beautify ul ul,
+.md-beautify ol ol,
+.md-beautify ul ol,
+.md-beautify ol ul {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+
+/* 继续添加其余样式 */
+.md-beautify ol {
+  list-style-type: decimal;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 25px;
+  padding-right: 0px;
+  color: rgb(0, 0, 0);
+}
+
+.md-beautify ol li section {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: rgb(89, 89, 89);
+  font-size: 14px;
+  line-height: 1.8em;
+  letter-spacing: 0.02em;
+  text-align: left;
+  font-weight: normal;
+}
+
+.md-beautify p {
+  color: rgb(43, 43, 43);
+  font-size: 14px;
+  line-height: 1.8em;
+  letter-spacing: 0.02em;
+  text-align: left;
+  text-indent: 0em;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.md-beautify blockquote.custom-blockquote {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: rgba(64, 184, 255, 0.4);
+  border-bottom-color: rgba(64, 184, 255, 0.4);
+  border-left-color: rgba(64, 184, 255, 0.4);
+  border-right-color: rgba(64, 184, 255, 0.4);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(64, 184, 250, 0.1);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: auto;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  display: block;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.md-beautify blockquote.custom-blockquote > span {
+  display: block;
+  color: rgba(64, 184, 250, 0.5);
+  font-size: 28px;
+  line-height: 1.5em;
+  letter-spacing: 0em;
+  text-align: left;
+  font-weight: bold;
+}
+
+.md-beautify blockquote p {
+  text-indent: 0em;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 0px;
+  color: rgb(59, 59, 59);
+  font-size: 14px;
+  line-height: 1.8em;
+  letter-spacing: 0.02em;
+  text-align: left;
+  font-weight: normal;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
+.md-beautify strong {
+  color: rgb(53, 148, 247);
+  font-weight: bold;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: auto;
+  height: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-top-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-width: 3px;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  border-right-width: 3px;
+  border-top-color: rgba(0, 0, 0, 0.4);
+  border-bottom-color: rgba(0, 0, 0, 0.4);
+  border-left-color: rgba(0, 0, 0, 0.4);
+  border-right-color: rgba(0, 0, 0, 0.4);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.md-beautify em {
+  color: rgb(53, 148, 247);
+  font-style: italic;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: auto;
+  height: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-top-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-width: 3px;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  border-right-width: 3px;
+  border-top-color: rgba(0, 0, 0, 0.4);
+  border-bottom-color: rgba(0, 0, 0, 0.4);
+  border-left-color: rgba(0, 0, 0, 0.4);
+  border-right-color: rgba(0, 0, 0, 0.4);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.md-beautify a {
+  color: rgb(64, 184, 250);
+  font-weight: bold;
+  border-top-style: none;
+  border-bottom-style: solid;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: rgb(30, 107, 184);
+  border-bottom-color: rgb(59, 170, 250);
+  border-left-color: rgb(30, 107, 184);
+  border-right-color: rgb(30, 107, 184);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-decoration-line: none;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+  overflow-wrap: break-word;
+}
+
+.md-beautify hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-top-style: solid;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-width: 2px;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  border-right-width: 3px;
+  border-top-color: rgb(59, 170, 250);
+  border-bottom-color: rgba(0, 0, 0, 0.4);
+  border-left-color: rgba(0, 0, 0, 0.4);
+  border-right-color: rgba(0, 0, 0, 0.4);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: auto;
+  height: 1px;
+}
+
+.md-beautify s {
+  color: rgb(53, 148, 247);
+  font-style: italic;
+}
+
+.md-beautify figure {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.md-beautify figure img {
+  display: block;
+  max-width: 100%;
+  border-top-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-width: 3px;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  border-right-width: 3px;
+  border-top-color: rgba(0, 0, 0, 0.4);
+  border-bottom-color: rgba(0, 0, 0, 0.4);
+  border-left-color: rgba(0, 0, 0, 0.4);
+  border-right-color: rgba(0, 0, 0, 0.4);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  object-fit: fill;
+  box-shadow: rgb(153, 153, 153) 2px 4px 8px 0px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
+.md-beautify figure figcaption {
+  color: rgb(136, 136, 136);
+  font-size: 13px;
+  line-height: 1.5em;
+  letter-spacing: 0em;
+  text-align: center;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.md-beautify .table-container {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  overflow-x: auto;
+}
+
+.md-beautify table {
+  display: table;
+  text-align: left;
+}
+
+.md-beautify table thead th {
+  color: rgb(89, 89, 89);
+  font-size: 14px;
+  line-height: 1.5em;
+  letter-spacing: 0.02em;
+  font-weight: bold;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgb(240, 240, 240);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: auto;
+  height: auto;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: rgba(204, 204, 204, 0.4);
+  border-bottom-color: rgba(204, 204, 204, 0.4);
+  border-left-color: rgba(204, 204, 204, 0.4);
+  border-right-color: rgba(204, 204, 204, 0.4);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  min-width: 85px;
+  text-align: left;
+}
+
+
+/* 继续表格相关样式 */
+.md-beautify table thead th:nth-child(2) {
+  text-align: center;
+}
+
+.md-beautify table thead th:nth-child(3) {
+  text-align: right;
+}
+
+.md-beautify table tbody {
+  font-size: 14px;
+  line-height: 1.5em;
+  letter-spacing: 0.02em;
+  text-align: left;
+  font-weight: normal;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: initial;
+  border-right-style: initial;
+  border-bottom-style: initial;
+  border-left-style: initial;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+.md-beautify table tbody tr:nth-child(odd) {
+  color: rgb(89, 89, 89);
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgb(255, 255, 255);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: auto;
+  height: auto;
+}
+
+.md-beautify table tbody tr:nth-child(even) {
+  color: rgb(89, 89, 89);
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgb(248, 248, 248);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: auto;
+  height: auto;
+}
+
+.md-beautify table tbody td {
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  min-width: 85px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: rgba(204, 204, 204, 0.4);
+  border-bottom-color: rgba(204, 204, 204, 0.4);
+  border-left-color: rgba(204, 204, 204, 0.4);
+  border-right-color: rgba(204, 204, 204, 0.4);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  text-align: left;
+}
+
+.md-beautify table tbody td:nth-child(2) {
+  text-align: center;
+}
+
+.md-beautify table tbody td:nth-child(3) {
+  text-align: right;
+}
+
+/* 图片带链接的样式 */
+.md-beautify figure a {
+  color: rgb(64, 184, 250);
+  font-weight: bold;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-decoration-line: none;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+  overflow-wrap: break-word;
+  border-top-width: initial;
+  border-right-width: initial;
+  border-bottom-width: initial;
+  border-left-width: initial;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 特殊图片标题样式 */
+.md-beautify figure figcaption.overlay {
+  font-size: 13px;
+  letter-spacing: 0em;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: -35px;
+  background-image: initial;
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  line-height: 35px;
+  z-index: 20;
+}
+
+/* 代码块样式 */
+.md-beautify pre {
+  background-color: rgb(24, 24, 24);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  overflow: auto;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+
+  
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+  text-align: left;
+}
+.md-beautify pre.custom {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+  text-align: left;
+}
+.md-beautify pre.custom::before {
+  content: '';
+  display: block;
+  background: url(https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg);
+  height: 30px;
+  width: 100%;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-color: #282c34;
+  margin-bottom: -6px;
+  border-radius: 5px;
+  background-position: 10px 10px;
+}
+.md-beautify code {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  background-color: rgba(64, 184, 250, 0.1);
+  padding: 2px 4px;
+  border-radius: 3px;
+  color: rgb(53, 148, 247);
+}
+.md-beautify pre code {
+ padding: 16px; 
+}
+
+.md-beautify .column-container {
+  display: flex;
+  gap: 12px;
+}
+
+/* 在文件末尾添加以下样式 */
+
+.md-beautify .footnote-word,
+.md-beautify .footnote-ref {
+  color: rgb(53, 148, 247);
+  font-weight: bold;
+}
+
+.md-beautify .footnotes-sep {
+  margin-top: 30px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-top-style: none;
+    border-bottom-style: solid;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-width: 3px;
+    border-bottom-width: 2px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-color: rgba(0, 0, 0, 0.4);
+    border-bottom-color: rgb(64, 184, 250);
+    border-left-color: rgba(0, 0, 0, 0.4);
+    border-right-color: rgba(0, 0, 0, 0.4);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(64, 184, 250, 0.4) 100%), none;
+    background-origin: padding-box;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: no-repeat;
+    background-size: auto;
+    width: fit-content;
+    height: auto;
+}
+.md-beautify .footnotes-sep>span {
+  display: inline;
+  color: rgb(89, 89, 89);
+  font-size: 18px;
+  line-height: 1.5em;
+  letter-spacing: 0em;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* 脚注样式 */
+.md-beautify .footnotes {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgb(89, 89, 89);
+
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  border-top-color: rgb(64, 184, 250);
+  border-bottom-color: rgb(64, 184, 250);
+  border-left-color: rgb(64, 184, 250);
+  border-right-color: rgb(64, 184, 250);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(53, 148, 247, 0.3);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: auto;
+  height: auto;
+}
+
+.md-beautify .footnote-item {
+  display: flex;
+  /* margin-bottom: 8px; */
+  line-height: 1.8;
+}
+
+.md-beautify .footnote-num {
+  color: rgb(53, 148, 247);
+  font-weight: bold;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+.md-beautify .footnote-item p {
+  color: rgba(89, 89, 89, 1);
+  font-weight: bold;
+  display: inline;
+  padding: 0px;
+  margin: 0px;
+  word-break: break-all;
+  flex-basis: 0%;
+  flex-grow: 1;
+
+  font-size: 14px;
+  line-height: 1.8em;
+  letter-spacing: 0em;
+}
+.md-beautify .footnote-item p em{
+  color: rgba(89, 89, 89, 1);
+  font-weight: normal;
+  font-style: italic;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: left;
+  background-position-y: top;
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: auto;
+  height: auto;
+  border-top-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-width: 3px;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  border-right-width: 3px;
+  border-top-color: rgba(0, 0, 0, 0.4);
+  border-bottom-color: rgba(0, 0, 0, 0.4);
+  border-left-color: rgba(0, 0, 0, 0.4);
+  border-right-color: rgba(0, 0, 0, 0.4);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.md-beautify .footnote-ref {
+  font-size: 0.8em;
+  vertical-align: super;
+  margin: 0 2px;
+}
