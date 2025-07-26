@@ -348,7 +348,8 @@
   font-weight: bold;
   flex-direction: unset;
   float: unset;
-  height: 38px;
+  /* height: 38px; */
+  height: fit-content;
   justify-content: unset;
   margin-left: 0px;
   margin-right: 0px;
