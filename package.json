@@ -1,19 +1,54 @@
 {
-  "name": "md-beautiful",
+  "name": "md-beautify",
   "version": "1.0.0",
-  "description": "将Markdown转换为美观的HTML",
-  "main": "index.js",
+  "description": "Convert Markdown files to beautiful HTML with inline styles",
+  "main": "src/main.js",
   "bin": {
-    "mb": "./v2/cli.js"
+    "md-beautify": "./bin/cli.js",
+    "mdb": "./bin/cli.js"
   },
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "convert": "node index.js markdown.md output.html"
+    "start": "node bin/cli.js",
+    "dev": "node bin/cli.js convert example/markdown.md -i",
+    "test:convert": "node bin/cli.js convert example/markdown.md -o test-output.html",
+    "test:batch": "node bin/cli.js convert example/*.md -d output/",
+    "test:watch": "node bin/cli.js convert example/markdown.md -w",
+    "build": "echo 'No build step required'",
+    "prepublishOnly": "npm run test:convert"
+  },
+  "keywords": [
+    "markdown",
+    "html",
+    "converter",
+    "beautify",
+    "inline-styles",
+    "cli",
+    "wechat",
+    "zhihu",
+    "juejin"
+  ],
+  "author": {
+    "name": "maonianyou",
+    "email": "maonianyou@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CoderMonkie/md-beautify.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
+    "chalk": "^5.3.0",
+    "chokidar": "^3.5.3",
+    "clipboardy": "^4.0.0",
+    "commander": "^11.1.0",
+    "figlet": "^1.7.0",
     "glob": "^11.0.1",
     "highlight.js": "^11.11.1",
+    "inquirer": "^9.2.11",
     "juice": "^11.0.1",
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.7",
@@ -32,6 +67,10 @@
     "markdown-it-sup": "^1.0.0",
     "markdown-it-table-of-contents": "^0.9.0",
     "markdown-it-task-lists": "^2.1.1",
-    "markdown-it-toc-done-right": "^4.2.0"
+    "markdown-it-toc-done-right": "^4.2.0",
+    "ora": "^7.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0"
   }
 }
