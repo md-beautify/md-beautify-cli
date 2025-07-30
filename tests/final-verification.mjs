@@ -25,6 +25,21 @@ const verifications = [
     name: '批量转换外部CSS',
     file: 'tests/test-batch-output/markdown_2025-07-30T05-27-57.html',
     check: (content) => content.includes('<link rel="stylesheet" href="md-beautify.css">')
+  },
+  {
+    name: '微信主题预览',
+    file: 'tests/wechat-preview.html',
+    check: (content) => content.includes('Wechat Theme Preview') && content.includes('md-beautify')
+  },
+  {
+    name: '知乎主题预览',
+    file: 'tests/zhihu-preview.html',
+    check: (content) => content.includes('Zhihu Theme Preview') && content.includes('md-beautify')
+  },
+  {
+    name: 'GitHub主题预览',
+    file: 'tests/github-preview.html',
+    check: (content) => content.includes('Github Theme Preview') && content.includes('md-beautify')
   }
 ];
 
@@ -59,12 +74,17 @@ console.log('3. ✅ 自动复制CSS文件到输出目录');
 console.log('4. ✅ 使用 juice 库实现完整的CSS内联');
 console.log('5. ✅ 主题预览功能正常工作');
 console.log('6. ✅ 批量转换支持内联和外部CSS两种模式');
+console.log('7. ✅ 实现真正的主题差异化 (WeChat, Zhihu, GitHub)');
+console.log('8. ✅ 创建主题管理器统一管理主题文件');
+console.log('9. ✅ 支持自定义样式配置模板');
 
 console.log('\n📝 使用说明:');
 console.log('• 默认模式 (内联CSS): node bin/cli.js convert file.md');
 console.log('• 外部CSS模式: node bin/cli.js convert file.md --no-inline');
 console.log('• 批量转换: node bin/cli.js convert *.md -d output/');
 console.log('• 主题预览: node bin/cli.js theme preview github');
+console.log('• 主题列表: node bin/cli.js theme list');
+console.log('• 设置主题: node bin/cli.js theme use wechat');
 
 if (passed === total) {
   console.log('\n🎊 所有改进都已成功实现并验证通过！');

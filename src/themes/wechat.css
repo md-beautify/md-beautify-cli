@@ -1,0 +1,170 @@
+/* 微信公众号主题 - 针对移动端阅读优化 */
+.md-beautify {
+  margin: 0;
+  padding: 16px;
+  background-color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+/* 标题样式 - 微信风格 */
+.md-beautify h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center;
+  margin: 20px 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #3498db;
+}
+
+.md-beautify h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e;
+  margin: 24px 0 12px 0;
+  padding-left: 12px;
+  border-left: 4px solid #3498db;
+  background: linear-gradient(90deg, #f8f9fa 0%, transparent 100%);
+  padding: 8px 0 8px 12px;
+}
+
+.md-beautify h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 20px 0 10px 0;
+}
+
+/* 段落样式 */
+.md-beautify p {
+  margin: 12px 0;
+  text-indent: 2em;
+  text-align: justify;
+}
+
+/* 强调文本 */
+.md-beautify strong {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.md-beautify em {
+  color: #8e44ad;
+  font-style: italic;
+}
+
+/* 代码样式 - 适合手机阅读 */
+.md-beautify code {
+  background-color: #f1f2f6;
+  color: #e74c3c;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "SF Mono", Monaco, Inconsolata, "Roboto Mono", Consolas, "Courier New", monospace;
+  font-size: 14px;
+}
+
+.md-beautify pre {
+  background-color: #2f3542;
+  color: #f1f2f6;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 16px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.md-beautify pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: 14px;
+}
+
+/* 引用样式 - 微信风格 */
+.md-beautify blockquote {
+  background-color: #ecf0f1;
+  border-left: 4px solid #3498db;
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: #555;
+}
+
+/* 列表样式 */
+.md-beautify ul, .md-beautify ol {
+  margin: 12px 0;
+  padding-left: 24px;
+}
+
+.md-beautify li {
+  margin: 6px 0;
+  line-height: 1.6;
+}
+
+/* 表格样式 - 移动端友好 */
+.md-beautify table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.md-beautify th {
+  background-color: #3498db;
+  color: white;
+  padding: 12px 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.md-beautify td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #ecf0f1;
+  text-align: center;
+}
+
+.md-beautify tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* 链接样式 */
+.md-beautify a {
+  color: #3498db;
+  text-decoration: none;
+  border-bottom: 1px dotted #3498db;
+}
+
+.md-beautify a:hover {
+  color: #2980b9;
+  border-bottom: 1px solid #2980b9;
+}
+
+/* 分割线 */
+.md-beautify hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #bdc3c7, transparent);
+  margin: 24px 0;
+}
+
+/* 图片样式 */
+.md-beautify img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 12px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

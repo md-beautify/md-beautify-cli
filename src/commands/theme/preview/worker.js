@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import { markdownParser } from '../../../md.mjs';
 import { logSuccess, logError, ensureDir, fileExists } from '../../../utils/helpers.js';
+import { themeManager } from '../../../utils/themeManager.js';
 
 /**
  * 预览主题
@@ -19,14 +20,13 @@ export async function run(command, options) {
     return;
   }
   
-  const availableThemes = ['default', 'github', 'wechat', 'zhihu'];
-  
-  if (!availableThemes.includes(themeName)) {
+  if (!themeManager.themeExists(themeName)) {
     logError(`Theme "${themeName}" not found`);
+    const availableThemes = themeManager.getThemeNames();
     console.log('Available themes:', availableThemes.join(', '));
     return;
   }
-  
+
   // 创建示例内容
   const sampleMarkdown = `# ${themeName.charAt(0).toUpperCase() + themeName.slice(1)} Theme Preview
 
@@ -109,23 +109,20 @@ function generateFullHtml(htmlContent, options) {
   const theme = options.theme || 'default';
   const inline = options.inline;
   
-  // 读取CSS文件
-  const cssPath = path.resolve(process.cwd(), 'src/md-beautify.css');
-  const customCssPath = path.resolve(process.cwd(), 'src/custom.css');
-  
   let styles = '';
   
   if (inline) {
-    // 内联样式模式
+    // 使用主题管理器获取主题CSS
     try {
-      if (fileExists(cssPath)) {
-        styles += fs.readFileSync(cssPath, 'utf8');
-      }
-      if (fileExists(customCssPath)) {
-        styles += fs.readFileSync(customCssPath, 'utf8');
-      }
+      styles = themeManager.getThemeCSS(theme);
     } catch (error) {
-      console.warn(`Could not read CSS files: ${error.message}`);
+      console.warn(`Could not load theme CSS: ${error.message}`);
+      // 回退到默认主题
+      try {
+        styles = themeManager.getThemeCSS('default');
+      } catch (fallbackError) {
+        console.warn(`Could not load default theme CSS: ${fallbackError.message}`);
+      }
     }
   }
   
@@ -138,7 +135,7 @@ function generateFullHtml(htmlContent, options) {
   ${inline ? `<style>${styles}</style>` : ''}
 </head>
 <body>
-  <div class="markdown-body">
+  <div class="md-beautify">
     ${htmlContent}
   </div>
 </body>

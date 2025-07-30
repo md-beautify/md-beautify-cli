@@ -1,0 +1,42 @@
+{
+  "theme": "default",
+  "outputDir": "./output",
+  "inline": true,
+  "customStyles": {
+    "enabled": false,
+    "cssFile": "./custom-styles.css",
+    "overrides": {
+      "fontFamily": "",
+      "fontSize": "",
+      "lineHeight": "",
+      "primaryColor": "",
+      "backgroundColor": ""
+    }
+  },
+  "platforms": {
+    "wechat": {
+      "enabled": false,
+      "optimizations": {
+        "mobileFirst": true,
+        "imageMaxWidth": "100%",
+        "codeBlockStyle": "compact"
+      }
+    },
+    "zhihu": {
+      "enabled": false,
+      "optimizations": {
+        "professionalStyle": true,
+        "codeHighlighting": "enhanced",
+        "tableStyle": "modern"
+      }
+    },
+    "github": {
+      "enabled": false,
+      "optimizations": {
+        "syntaxHighlighting": true,
+        "taskLists": true,
+        "alerts": true
+      }
+    }
+  }
+}

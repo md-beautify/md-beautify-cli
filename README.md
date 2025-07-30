@@ -1,6 +1,10 @@
-# MD Beautify
-
-一个强大的 Markdown 转 HTML 工具，专为生成美观的内联样式 HTML 而设计，方便复制到各种平台发布。
+<div align="center">
+  <img src="src/logo.png" alt="MD Beautify Logo" width="120" height="120">
+  
+  # MD Beautify
+  
+  <p>一个强大的 Markdown 转 HTML 工具，专为生成美观的内联样式 HTML 而设计，方便复制到各种平台发布。</p>
+</div>
 
 ## ✨ 特性
 
@@ -170,18 +174,80 @@ md-beautify theme preview github -o preview.html
 
 ### 内置主题
 
-- `default` - 默认主题，适合通用场景
-- `github` - GitHub 风格主题
-- `wechat` - 微信公众号优化主题
-- `zhihu` - 知乎专栏优化主题
+- `default` - 默认主题，适合通用场景，现代简洁风格
+- `github` - GitHub 官方风格主题，完全还原 GitHub Markdown 渲染效果
+- `wechat` - 微信公众号优化主题，针对移动端阅读优化，支持圆角卡片风格
+- `zhihu` - 知乎专栏优化主题，专业技术文章风格，适合程序员和技术写作
+
+### 主题特色
+
+**WeChat 主题特点:**
+- 🔸 移动端优化的字体和间距
+- 🔸 圆角卡片式代码块设计
+- 🔸 温暖的配色方案
+- 🔸 适合微信公众号的图片样式
+
+**Zhihu 主题特点:**
+- 🔸 专业的技术文章风格
+- 🔸 增强的代码高亮显示
+- 🔸 现代化的表格设计
+- 🔸 知乎蓝色调的强调元素
+
+**GitHub 主题特点:**
+- 🔸 完全还原 GitHub 官方样式
+- 🔸 支持任务列表和警告框
+- 🔸 标准的开源项目文档风格
+- 🔸 程序员友好的代码显示
 
 ### 自定义主题
 
-你可以通过修改 CSS 文件来自定义主题：
+你可以通过以下方式自定义主题：
 
-1. 复制 `src/md-beautify.css` 作为基础
-2. 修改样式
-3. 通过 `--config` 参数指定自定义配置
+1. **使用配置文件** (推荐)
+   ```json
+   {
+     "theme": "default",
+     "customStyles": {
+       "enabled": true,
+       "cssFile": "./custom-styles.css"
+     }
+   }
+   ```
+
+2. **修改 custom.css 文件**
+   ```bash
+   # 复制示例样式
+   cp examples/custom-styles.css src/custom.css
+   # 编辑自定义样式
+   ```
+
+3. **主题继承系统**
+   ```css
+   /* 基于现有主题进行扩展 */
+   @import url('./themes/github.css');
+   
+   /* 覆盖特定样式 */
+   .md-beautify h1 {
+     color: #your-color;
+   }
+   ```
+
+### 主题管理命令
+
+```bash
+# 列出所有可用主题
+md-beautify theme list
+
+# 设置默认主题
+md-beautify theme use wechat
+
+# 预览主题效果
+md-beautify theme preview zhihu -o preview.html
+
+# 比较不同主题
+md-beautify theme preview github -o github-preview.html
+md-beautify theme preview wechat -o wechat-preview.html
+```
 
 ## 📁 项目结构
 
@@ -191,26 +257,40 @@ md-beautify/
 │   └── cli.js             # CLI 入口文件
 ├── src/                   # 源代码
 │   ├── commands/          # 命令处理模块
+│   │   ├── config/        # 配置管理
+│   │   ├── convert/       # 转换命令
+│   │   └── theme/         # 主题管理
+│   ├── themes/            # 主题文件目录 🆕
+│   │   ├── wechat.css     # 微信主题
+│   │   ├── zhihu.css      # 知乎主题
+│   │   └── github.css     # GitHub主题
 │   ├── utils/             # 工具函数
+│   │   ├── helpers.js     # 通用工具
+│   │   └── themeManager.js # 主题管理器 🆕
 │   ├── beautify.cjs       # 核心转换逻辑
 │   ├── index.cjs          # 主入口
 │   ├── main.js            # 主程序
 │   ├── md.mjs             # Markdown 处理
 │   ├── md-beautify.css    # 默认样式
-│   └── custom.css         # 自定义样式
-├── examples/              # 示例文件
+│   ├── custom.css         # 自定义样式
+│   └── logo.png           # 项目Logo 🆕
+├── examples/              # 示例文件 🆕
 │   ├── demo.css           # 示例样式
+│   ├── custom-styles.css  # 自定义样式示例 🆕
 │   └── markdown.md        # 示例 Markdown
-├── tests/                 # 测试文件
+├── tests/                 # 测试文件 🆕
 │   ├── test-batch/        # 批量测试目录
 │   ├── test-batch-output/ # 批量测试输出
 │   ├── final-verification.mjs  # 最终验证脚本
+│   ├── *-preview.html     # 主题预览文件 🆕
 │   └── *.html             # 各种测试输出文件
-├── docs/                  # 文档
+├── docs/                  # 文档 🆕
 │   └── design.md          # 设计文档
-├── temp/                  # 临时文件
+├── temp/                  # 临时文件 🆕
 │   ├── v2/                # 旧版本文件
 │   └── *.html             # 临时输出文件
+├── config.template.json   # 配置文件模板 🆕
+├── .gitignore             # Git忽略文件 🆕
 ├── package.json           # 项目配置
 └── README.md              # 项目说明
 ```
@@ -284,28 +364,21 @@ MIT License
 
 ## TODO
 
-### 微信公众号主题 (wechat)
-- **字体**: 更大的字号，适合手机阅读
-- **颜色**: 偏暖色调，符合微信生态
-- **间距**: 更大的行间距和段落间距
-- **代码块**: 圆角设计，浅色背景
-- **引用**: 左侧彩色边框，背景色区分
+### 🎯 近期计划
 
-### 知乎主题 (zhihu)
-- **字体**: 知乎官方字体栈
-- **颜色**: 知乎蓝色主色调
-- **布局**: 更紧凑的设计，适合桌面阅读
-- **代码块**: 深色主题，符合程序员喜好
-- **表格**: 简洁的边框设计
+#### CLI 参数增强
+```bash
+# 使用自定义 CSS 文件
+md-beautify convert file.md --custom-css ./my-style.css
 
-### GitHub 主题 (github)
-- **字体**: GitHub 官方字体
-- **颜色**: GitHub 的灰白色调
-- **代码块**: GitHub 风格的代码高亮
-- **表格**: GitHub 风格的斑马纹表格
+# 快速样式调整
+md-beautify convert file.md --font-size 18px --primary-color "#ff6b6b"
 
-> 支持配置化，如
+# 主题参数覆盖
+md-beautify convert file.md -t wechat --code-theme dark
+```
 
+#### 配置文件增强
 ```json
 // ~/.md-beautify/config.json
 {
@@ -315,28 +388,61 @@ MIT License
     "primaryColor": "#007acc",
     "codeBackground": "#f6f8fa",
     "customCssPath": "~/my-custom.css"
+  },
+  "platforms": {
+    "wechat": {
+      "imageCompression": true,
+      "maxWidth": "100%"
+    }
   }
 }
 ```
 
-> cli 参数支持
+### 🚀 中期目标
 
-```bash
-# 使用自定义 CSS
-md-beautify convert file.md --custom-css ./my-style.css
+#### 图片处理优化
+- 🖼️ 自动图片压缩和优化
+- 📱 响应式图片支持
+- 🔗 图床集成 (GitHub, 七牛云, 阿里云OSS)
+- 🎨 图片水印和边框样式
 
-# 快速样式调整
-md-beautify convert file.md --font-size 18px --primary-color "#ff6b6b"
-```
+#### 移动端适配
+- 📱 移动端专用样式优化
+- 🔄 自适应布局改进
+- 👆 触摸友好的交互元素
 
-近期
-- 🔧 实现真正的主题差异化 CSS
-- 📝 添加自定义样式配置支持
-中期
-- 🎨 开发专门的平台优化主题
-- 🖼️ 添加图片处理和图床支持
-- 📱 移动端适配优化
-远期
-- Web 界面的主题编辑器
+#### 主题系统扩展
+- 🎨 更多内置主题 (掘金、CSDN、简书等)
+- 🔧 主题继承和混合机制
+- 🎯 平台特定优化选项
+
+### 🌟 远期愿景
+
+#### 可视化编辑器
+- 🖥️ Web 界面的主题编辑器
+- 🎨 实时样式预览和调整
+- 📊 多主题效果对比工具
+- 💾 云端主题分享平台
+
+#### 自动化发布
 - 🔄 多平台一键发布
-- 📊 样式效果预览对比
+- 📝 内容同步和版本管理
+- 🤖 AI 辅助内容优化建议
+- 📈 发布效果统计分析
+
+#### 企业级功能
+- 👥 团队协作和主题共享
+- 🔐 企业级安全和权限管理
+- 📋 批量处理和工作流集成
+- 🔌 API 接口和第三方集成
+
+---
+
+### ✅ 已完成功能
+
+- ✅ **主题差异化**: 微信、知乎、GitHub 专用主题
+- ✅ **自定义样式配置**: 配置文件模板和自定义 CSS 支持
+- ✅ **主题管理系统**: 完整的主题管理器和 CLI 命令
+- ✅ **CSS 内联优化**: 使用 juice 库实现完整内联
+- ✅ **批量转换支持**: 支持目录批量处理
+- ✅ **主题预览功能**: 实时预览不同主题效果

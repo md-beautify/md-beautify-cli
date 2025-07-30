@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { setConfigValue } from '../../config/configManager.js';
 import { logSuccess, logError } from '../../../utils/helpers.js';
+import { themeManager } from '../../../utils/themeManager.js';
 
 /**
  * 设置默认主题
@@ -17,10 +18,9 @@ export async function run(command, options) {
     return;
   }
   
-  const availableThemes = ['default', 'github', 'wechat', 'zhihu'];
-  
-  if (!availableThemes.includes(themeName)) {
+  if (!themeManager.themeExists(themeName)) {
     logError(`Theme "${themeName}" not found`);
+    const availableThemes = themeManager.getThemeNames();
     console.log('Available themes:', availableThemes.join(', '));
     return;
   }

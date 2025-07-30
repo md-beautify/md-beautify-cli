@@ -1,0 +1,236 @@
+/* 知乎主题 - 专业技术文章风格 */
+.md-beautify {
+  margin: 0 auto;
+  padding: 24px;
+  max-width: 800px;
+  background-color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a1a;
+}
+
+/* 标题样式 - 知乎风格 */
+.md-beautify h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 32px 0 24px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ebebeb;
+  text-align: left;
+}
+
+.md-beautify h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 28px 0 16px 0;
+  position: relative;
+}
+
+.md-beautify h2::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background-color: #0084ff;
+  border-radius: 2px;
+}
+
+.md-beautify h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 24px 0 12px 0;
+}
+
+.md-beautify h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 20px 0 10px 0;
+}
+
+/* 段落样式 */
+.md-beautify p {
+  margin: 16px 0;
+  text-align: justify;
+  text-indent: 0;
+}
+
+/* 强调文本 */
+.md-beautify strong {
+  color: #0084ff;
+  font-weight: 600;
+}
+
+.md-beautify em {
+  color: #8590a6;
+  font-style: italic;
+}
+
+/* 代码样式 - 程序员友好 */
+.md-beautify code {
+  background-color: #f6f6f6;
+  color: #c7254e;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Source Code Pro", "Menlo", "Consolas", monospace;
+  font-size: 13px;
+}
+
+.md-beautify pre {
+  background-color: #282c34;
+  color: #abb2bf;
+  padding: 20px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 20px 0;
+  border: 1px solid #e1e4e8;
+  position: relative;
+}
+
+.md-beautify pre::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ff5f56;
+  box-shadow: 20px 0 #ffbd2e, 40px 0 #27ca3f;
+}
+
+.md-beautify pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 引用样式 - 知乎风格 */
+.md-beautify blockquote {
+  background-color: #f6f6f6;
+  border-left: 4px solid #0084ff;
+  margin: 20px 0;
+  padding: 16px 20px;
+  border-radius: 0 4px 4px 0;
+  color: #666;
+  font-style: normal;
+  position: relative;
+}
+
+.md-beautify blockquote::before {
+  content: """;
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  font-size: 30px;
+  color: #0084ff;
+  font-family: Georgia, serif;
+}
+
+/* 列表样式 */
+.md-beautify ul, .md-beautify ol {
+  margin: 16px 0;
+  padding-left: 20px;
+}
+
+.md-beautify li {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.md-beautify ul li::marker {
+  color: #0084ff;
+}
+
+.md-beautify ol li::marker {
+  color: #0084ff;
+  font-weight: 600;
+}
+
+/* 表格样式 - 简洁专业 */
+.md-beautify table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.md-beautify th {
+  background-color: #f6f8fa;
+  color: #24292e;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #e1e4e8;
+}
+
+.md-beautify td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e1e4e8;
+  color: #586069;
+}
+
+.md-beautify tr:last-child td {
+  border-bottom: none;
+}
+
+.md-beautify tr:hover {
+  background-color: #f6f8fa;
+}
+
+/* 链接样式 */
+.md-beautify a {
+  color: #0084ff;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.md-beautify a:hover {
+  color: #0066cc;
+  border-bottom: 1px solid #0066cc;
+}
+
+/* 分割线 */
+.md-beautify hr {
+  border: none;
+  height: 1px;
+  background-color: #e1e4e8;
+  margin: 32px 0;
+}
+
+/* 图片样式 */
+.md-beautify img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 16px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 标签样式 */
+.md-beautify .tag {
+  display: inline-block;
+  background-color: #f1f3f4;
+  color: #5f6368;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin: 2px;
+}
