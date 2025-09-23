@@ -26,7 +26,7 @@ const tests = [
   },
   {
     name: '转换文件（内联样式）',
-    command: 'node bin/cli.js convert example/markdown.md -i -o test-inline.html',
+    command: 'node bin/cli.js convert example/markdown.md --inline -o test-inline.html',
     expectSuccess: true
   },
   {

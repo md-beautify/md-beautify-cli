@@ -35,7 +35,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CoderMonkie/md-beautify.git"
+    "url": "https://github.com/md-beautify/md-beautify-cli"
   },
   "engines": {
     "node": ">=18.0.0"
