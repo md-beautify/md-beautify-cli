@@ -68,7 +68,7 @@ md-beautify convert **/*.md -d output/
 md-beautify convert input.md --watch
 
 # 监听并生成内联样式
-md-beautify convert input.md -w -i
+md-beautify convert input.md -w -inline
 ```
 
 ## 📖 命令详解
