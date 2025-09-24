@@ -222,7 +222,7 @@ async function generateFullHtml(htmlContent, options) {
   ${inline ? `<style>${styles}</style>` : ''}
 </head>
 <body>
-  <div id="writing-content" class="writing-content" style="max-width:677px;margin:0 auto;">
+  <div id="writing-content" class="writing-content" style="max-width:677px;margin:0 auto;padding-bottom:20px;">
     <section id="nice" data-tool="md-beautify" data-website="https://github.com/your-repo/md-beautify" class="md-beautify">
       ${htmlContent}
     </section>
