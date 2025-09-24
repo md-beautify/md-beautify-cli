@@ -128,7 +128,7 @@
 }
 
 .md-beautify blockquote::before {
-  content: """;
+  content: "";
   position: absolute;
   top: -5px;
   left: 10px;
