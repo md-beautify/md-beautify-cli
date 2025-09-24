@@ -8,6 +8,14 @@
     "mdb": "./bin/cli.js"
   },
   "type": "module",
+  "files": [
+    "bin/",
+    "src/",
+    "examples/",
+    "config.template.json",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "start": "node bin/cli.js",
     "dev": "node bin/cli.js convert example/markdown.md -i",
@@ -18,6 +26,7 @@
     "prepublishOnly": "npm run test:convert"
   },
   "keywords": [
+    "markdown-to-html",
     "markdown",
     "html",
     "converter",
@@ -26,7 +35,9 @@
     "cli",
     "wechat",
     "zhihu",
-    "juejin"
+    "juejin",
+    "documentation-tool",
+    "static-site-generator"
   ],
   "author": {
     "name": "maonianyou",
@@ -36,6 +47,13 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/md-beautify/md-beautify-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/md-beautify/md-beautify-cli/issues"
+  },
+  "homepage": "https://github.com/md-beautify/md-beautify-cli#readme",
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
     "node": ">=18.0.0"

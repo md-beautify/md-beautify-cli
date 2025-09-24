@@ -29,9 +29,12 @@ npm install md-beautify
 
 ## 🚀 快速开始
 
+> 💡 **提示**: `md-beautify` 命令可以使用简写 `mdb`
+
 ### 基础用法
 
 ```bash
+# 命令 md-beautify 可以使用简写 mdb
 # 转换单个文件
 md-beautify convert input.md
 
