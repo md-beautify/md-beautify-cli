@@ -10,6 +10,7 @@
 import { run as listThemes } from './list/worker.js';
 import { run as useTheme } from './use/worker.js';
 import { run as previewTheme } from './preview/worker.js';
+import { run as currentTheme } from './current/worker.js';
 
 export default {
   name: 'theme',
@@ -50,11 +51,15 @@ export default {
         mockCommand.args = [args[1]];
         await previewTheme(mockCommand, options);
         break;
+      case 'current':
+        await currentTheme(mockCommand, options);
+        break;
       default:
         console.log('Available theme commands:');
         console.log('  list (ls)    - List available themes');
         console.log('  use          - Set default theme');
         console.log('  preview      - Preview a theme with sample content');
+        console.log('  current      - Show the currently active theme');
         console.log('');
         console.log('Use "md-beautify theme <command> --help" for more information.');
     }

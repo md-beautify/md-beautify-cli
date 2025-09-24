@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import { themeManager } from '../../../utils/themeManager.js';
+import { getConfigValue } from '../../config/configManager.js';
 
 /**
  * 列出所有可用主题
@@ -12,10 +13,14 @@ export async function run(command, options) {
   console.log();
   
   const themes = themeManager.getAvailableThemes();
+  const currentTheme = getConfigValue('theme') || 'default';
   
   themes.forEach(theme => {
-    const status = theme.builtin ? chalk.green('[Built-in]') : chalk.blue('[Custom]');
-    console.log(`  ${chalk.yellow(theme.name.padEnd(12))} ${status} ${chalk.gray(theme.description)}`);
+    const isCurrent = theme.name === currentTheme;
+    const status = isCurrent ? chalk.magenta('[Current]') : 
+                  theme.builtin ? chalk.green('[Built-in]') : chalk.blue('[Custom]');
+    const themeName = isCurrent ? chalk.bold(chalk.cyan(theme.name)) : chalk.yellow(theme.name);
+    console.log(`  ${themeName.padEnd(12)} ${status} ${chalk.gray(theme.description)}`);
   });
   
   console.log();
