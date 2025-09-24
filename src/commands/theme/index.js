@@ -18,7 +18,7 @@ export default {
   alias: 't',
   description: 'Manage themes',
   options: [
-    ['-o, --output <file>', 'Output file for preview (default: theme-preview.html)']
+    ['-o, --output <file>', 'Output file for preview (default: output/<theme-name>-theme-preview.html)']
   ],
   run: async (command, options) => {
     const args = command.args;
@@ -46,6 +46,7 @@ export default {
       case 'preview':
         if (args.length < 2) {
           console.log('Usage: md-beautify theme preview <theme-name> [-o output.html]');
+          console.log('Default output: output/<theme-name>-theme-preview.html');
           process.exit(1);
         }
         mockCommand.args = [args[1]];
