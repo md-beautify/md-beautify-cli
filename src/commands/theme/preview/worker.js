@@ -16,6 +16,7 @@ export async function run(command, options) {
   if (!themeName) {
     logError('Please specify a theme name');
     console.log('Usage: md-beautify theme preview <theme-name> [-o output.html]');
+    console.log('Default output: output/<theme-name>-theme-preview.html');
     console.log('Use "md-beautify theme list" to see available themes');
     return;
   }
@@ -76,7 +77,7 @@ hello('World');
 `;
 
   try {
-    const outputFile = options.output || `${themeName}-theme-preview.html`;
+    const outputFile = options.output || `output/${themeName}-theme-preview.html`;
     
     // 转换markdown为HTML
     const htmlContent = markdownParser.render(sampleMarkdown);
