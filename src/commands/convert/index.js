@@ -23,7 +23,7 @@ export default {
     ['-c, --copy', 'Copy result to clipboard', false],
     ['-w, --watch', 'Watch file changes and auto-convert', false],
     ['-d, --output-dir <dir>', 'Output directory for batch conversion'],
-    ['--no-timestamp', 'Do not add timestamp to output filename', false],
+    ['--no-timestamp', 'Do not add timestamp to output filename'],
     ['--config <config>', 'Path to config file'],
   ],
   run: async (...args) => {

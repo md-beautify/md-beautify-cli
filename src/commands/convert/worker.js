@@ -8,6 +8,7 @@ import clipboardy from 'clipboardy';
 import chokidar from 'chokidar';
 import juice from 'juice';
 import { markdownParser } from '../../md.mjs';
+import { readConfig } from '../config/configManager.js';
 import { 
   fileExists, 
   dirExists, 
@@ -39,6 +40,25 @@ export async function run(command, options) {
     return;
   }
 
+  // 读取配置文件并合并选项
+  const config = readConfig();
+  const mergedOptions = {
+    ...config,  // 配置文件设置
+    ...options  // 命令行选项（优先级更高）
+  };
+  
+  // 处理timestamp选项：commander.js将--no-timestamp映射为options.timestamp = false
+  // 如果没有指定--no-timestamp，使用配置文件设置
+  if (!('timestamp' in options)) {
+    mergedOptions.timestamp = config.timestamp;
+  }
+  
+  // 处理inline选项：commander.js将--no-inline映射为options.inline = false
+  // 如果没有指定--no-inline，使用配置文件设置
+  if (!('inline' in options)) {
+    mergedOptions.inline = config.inline;
+  }
+
   // 处理glob模式或单个文件
   const files = await getInputFiles(input);
   
@@ -49,10 +69,10 @@ export async function run(command, options) {
 
   logInfo(`Found ${files.length} file(s) to convert`);
 
-  if (options.watch) {
-    await watchFiles(files, options);
+  if (mergedOptions.watch) {
+    await watchFiles(files, mergedOptions);
   } else {
-    await convertFiles(files, options);
+    await convertFiles(files, mergedOptions);
   }
 }
 
@@ -319,14 +339,18 @@ function getOutputPath(inputFile, options) {
       copyCssFiles(options.outputDir);
     }
     
-    const filename = options.noTimestamp 
+    // commander.js 将 --no-timestamp 转换为 options.timestamp = false
+    const noTimestamp = options.timestamp === false;
+    const filename = noTimestamp 
       ? `${inputName}.html`
       : generateTimestampFilename(inputName);
     return path.join(options.outputDir, filename);
   }
   
   // 默认输出到同目录
-  const filename = options.noTimestamp 
+  // commander.js 将 --no-timestamp 转换为 options.timestamp = false
+  const noTimestamp = options.timestamp === false;
+  const filename = noTimestamp 
     ? `${inputName}.html`
     : generateTimestampFilename(inputName);
   
