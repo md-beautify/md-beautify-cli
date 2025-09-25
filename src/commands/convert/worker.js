@@ -69,6 +69,9 @@ export async function run(command, options) {
 
   logInfo(`Found ${files.length} file(s) to convert`);
 
+  // 参数验证：根据文件数量验证参数使用是否正确
+  validateParameters(files.length, mergedOptions);
+
   if (mergedOptions.watch) {
     await watchFiles(files, mergedOptions);
   } else {
@@ -308,6 +311,38 @@ function copyCssFiles(outputDir) {
 }
 
 /**
+ * 参数验证：根据文件数量验证参数使用是否正确
+ * @param {number} fileCount 
+ * @param {Object} options 
+ */
+function validateParameters(fileCount, options) {
+  // 单个文件转换
+  if (fileCount === 1) {
+    // 单个文件可以使用 --output 或默认行为
+    if (options.outputDir) {
+      logWarning('Using --output-dir for single file conversion is not recommended, use --output instead');
+    }
+  } 
+  // 批量转换
+  else {
+    // 批量转换应该使用 --output-dir
+    if (options.output && !options.output.endsWith(path.sep) && !options.output.endsWith('/')) {
+      const parsed = path.parse(options.output);
+      if (parsed.ext) {
+        // 如果指定了文件路径（有扩展名），应该报错
+        logError('Cannot use --output with a file path for batch conversion, use --output-dir instead');
+        process.exit(1);
+      }
+    }
+    
+    // 如果同时指定了 --output 和 --output-dir，给出警告
+    if (options.output && options.outputDir) {
+      logWarning('Both --output and --output-dir specified, --output-dir will be ignored');
+    }
+  }
+}
+
+/**
  * 获取输出文件路径
  * @param {string} inputFile 
  * @param {Object} options 
@@ -319,18 +354,34 @@ function getOutputPath(inputFile, options) {
   
   // 如果指定了输出文件
   if (options.output) {
-    const outputPath = path.resolve(options.output);
-    const outputDir = path.dirname(outputPath);
+    const fullPath = path.resolve(options.output);
+    const parsed = path.parse(fullPath);
     
-    // 如果不使用内联样式，复制CSS文件到输出目录
-    if (options.inline === false) {
-      copyCssFiles(outputDir);
+    // 极简逻辑：有扩展名就是文件，否则就是目录
+    if (parsed.ext) {
+      // 是文件，直接使用
+      const outputDir = path.dirname(fullPath);
+      if (options.inline === false) {
+        copyCssFiles(outputDir);
+      }
+      return fullPath;
+    } else {
+      // 是目录，创建目录并生成默认文件名
+      ensureDir(fullPath);
+      const noTimestamp = options.timestamp === false;
+      const filename = noTimestamp 
+        ? `${inputName}.html`
+        : generateTimestampFilename(inputName);
+      const finalPath = path.join(fullPath, filename);
+      
+      if (options.inline === false) {
+        copyCssFiles(fullPath);
+      }
+      return finalPath;
     }
-    
-    return outputPath;
   }
   
-  // 如果指定了输出目录
+  // 如果指定了输出目录（兼容参数）
   if (options.outputDir) {
     ensureDir(options.outputDir);
     
@@ -353,7 +404,7 @@ function getOutputPath(inputFile, options) {
   const filename = noTimestamp 
     ? `${inputName}.html`
     : generateTimestampFilename(inputName);
-  
+
   return path.join(inputDir, filename);
 }
 
