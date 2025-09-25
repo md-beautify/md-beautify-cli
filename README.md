@@ -38,7 +38,7 @@ npm install md-beautify
 # 转换单个文件
 md-beautify convert input.md
 
-# 指定输出文件
+# 指定输出文件，通过 -o 或 --output 选项，指定输出文件路径
 md-beautify convert input.md -o output.html
 
 # 生成内联样式（推荐用于平台发布）
@@ -51,14 +51,35 @@ md-beautify convert input.md --inline --copy
 ### 批量处理
 
 ```bash
-# 转换当前目录所有 .md 文件
-md-beautify convert *.md
+# 转换当前目录所有 .md 文件，注意加引号，否则可能无法正确识别
+md-beautify "convert *.md"
 
-# 转换到指定目录
-md-beautify convert *.md -d output/
+# 转换到指定目录，通过 -d 或 --output-dir 选项，指定输出目录
+md-beautify "convert *.md" -d output/
 
 # 递归转换子目录
-md-beautify convert **/*.md -d output/
+md-beautify "convert **/*.md" -d output/
+```
+
+**⚠️ 重要提示：**
+- 批量转换时，**必须使用 `-d/--output-dir` 指定输出目录**
+- 不能使用 `-o/--output` 指定单个文件，否则会报错
+- 通配符模式建议加引号，防止 shell 提前展开
+
+### 参数使用最佳实践
+
+```bash
+# ✅ 单个文件转换 - 推荐用法
+md-beautify convert article.md -o article.html
+
+# ⚠️ 单个文件转换 - 不推荐使用（会给出警告）
+md-beautify convert article.md -d output/
+
+# ✅ 批量文件转换 - 正确用法
+md-beautify "convert *.md" -d output/
+
+# ❌ 批量文件转换 - 错误用法（会报错退出）
+md-beautify "convert *.md" -o output.html
 ```
 
 ### 实时监听
@@ -83,14 +104,19 @@ md-beautify c <input> [options]  # 简写
 ```
 
 **选项:**
-- `-o, --output <file>` - 指定输出文件路径
+- `-o, --output <file>` - 指定输出文件路径（单个文件转换时使用）
 - `-t, --theme <theme>` - 选择主题 (github, default, custom)
 - `-i, --inline` - 生成内联样式
 - `-c, --copy` - 复制结果到剪贴板
 - `-w, --watch` - 监听文件变化
-- `-d, --output-dir <dir>` - 批量转换的输出目录
+- `-d, --output-dir <dir>` - 批量转换的输出目录（批量转换时使用）
 - `--no-timestamp` - 不在文件名中添加时间戳
 - `--config <config>` - 指定配置文件路径
+
+**参数使用说明:**
+- 单个文件转换：推荐使用 `-o/--output` 指定输出文件
+- 批量文件转换：必须使用 `-d/--output-dir` 指定输出目录
+- 同时指定 `-o` 和 `-d` 时，优先使用 `-o` 并给出警告
 
 **示例:**
 ```bash
