@@ -1,5 +1,7 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import { glob } from 'glob';
 import chalk from 'chalk';
 import clipboardy from 'clipboardy';
@@ -19,6 +21,9 @@ import {
   logWarning,
   logInfo
 } from '../../utils/helpers.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 /**
  * 转换命令的工作函数
@@ -176,10 +181,10 @@ async function generateFullHtml(htmlContent, options) {
   // 默认启用内联样式，除非明确指定--no-inline
   const inline = options.inline !== false && !options.noInline;
   
-  // 读取CSS文件
+  // 读取CSS文件 - 使用相对于当前模块的路径
   const cssFiles = [
-    path.resolve(process.cwd(), 'src/md-beautify.css'),
-    path.resolve(process.cwd(), 'src/custom.css')
+    path.resolve(__dirname, '../../md-beautify.css'),
+    path.resolve(__dirname, '../../custom.css')
   ];
   
   let styles = '';
@@ -196,8 +201,8 @@ async function generateFullHtml(htmlContent, options) {
     }
   }
   
-  // 添加highlight.js样式
-  const highlightCssPath = path.resolve(process.cwd(), 'node_modules/highlight.js/styles/github-dark.css');
+  // 添加highlight.js样式 - 使用相对于当前模块的路径
+  const highlightCssPath = path.resolve(__dirname, '../../../node_modules/highlight.js/styles/github-dark.css');
   if (fileExists(highlightCssPath)) {
     try {
       const highlightCss = fs.readFileSync(highlightCssPath, 'utf8');
@@ -263,13 +268,13 @@ function generateExternalCssLinks() {
  */
 function copyCssFiles(outputDir) {
   const cssFiles = [
-    { src: 'src/md-beautify.css', dest: 'md-beautify.css' },
-    { src: 'src/custom.css', dest: 'custom.css' },
-    { src: 'node_modules/highlight.js/styles/github-dark.css', dest: 'highlight.css' }
+    { src: path.resolve(__dirname, '../../md-beautify.css'), dest: 'md-beautify.css' },
+    { src: path.resolve(__dirname, '../../custom.css'), dest: 'custom.css' },
+    { src: path.resolve(__dirname, '../../../node_modules/highlight.js/styles/github-dark.css'), dest: 'highlight.css' }
   ];
   
   cssFiles.forEach(({ src, dest }) => {
-    const srcPath = path.resolve(process.cwd(), src);
+    const srcPath = src;
     const destPath = path.join(outputDir, dest);
     
     if (fileExists(srcPath)) {
@@ -294,7 +299,15 @@ function getOutputPath(inputFile, options) {
   
   // 如果指定了输出文件
   if (options.output) {
-    return path.resolve(options.output);
+    const outputPath = path.resolve(options.output);
+    const outputDir = path.dirname(outputPath);
+    
+    // 如果不使用内联样式，复制CSS文件到输出目录
+    if (options.inline === false) {
+      copyCssFiles(outputDir);
+    }
+    
+    return outputPath;
   }
   
   // 如果指定了输出目录
