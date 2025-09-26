@@ -52,13 +52,13 @@ md-beautify convert input.md --inline --copy
 
 ```bash
 # 转换当前目录所有 .md 文件，注意加引号，否则可能无法正确识别
-md-beautify "convert *.md"
+md-beautify convert "*.md"
 
 # 转换到指定目录，通过 -d 或 --output-dir 选项，指定输出目录
-md-beautify "convert *.md" -d output/
+md-beautify convert "*.md" -d output/
 
 # 递归转换子目录
-md-beautify "convert **/*.md" -d output/
+md-beautify convert "**/*.md" -d output/
 ```
 
 **⚠️ 重要提示：**
