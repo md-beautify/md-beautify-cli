@@ -1006,13 +1006,13 @@
 .md-beautify pre.custom::before {
   content: '';
   display: block;
-  background: url(https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg);
+  background-image: url(https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg);
   height: 30px;
   width: 100%;
   background-size: 40px;
   background-repeat: no-repeat;
   background-color: #282c34;
-  margin-bottom: -6px;
+  /* margin-bottom: -6px; */
   border-radius: 5px;
   background-position: 10px 10px;
 }
