@@ -274,6 +274,30 @@ async function generateFullHtml(htmlContent, options) {
 </body>
 </html>`;
 
+  // 在最终返回前插入悬浮复制按钮。复制的内容来自未注入辅助元素的完整HTML（含<head>中的<style>）。
+  const injectToolbar = (html, copySource) => {
+    const escapeForScript = (s) => (s || '').replace(/<\/script/gi, '<\\/script>');
+    const toolbarBlock = `
+<!-- mb-floating-toolbar start -->
+<style id="mb-toolbar-style">
+  .mb-toolbar{position:fixed;right:16px;bottom:16px;z-index:2147483647;display:flex;flex-direction:column;gap:8px;}
+  .mb-btn{appearance:none;border:none;border-radius:8px;padding:10px 14px;background:#1677ff;color:#fff;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,.15);cursor:pointer;opacity:.95;transition:opacity .2s,transform .08s;}
+  .mb-btn:hover{opacity:1}
+  .mb-btn:active{transform:scale(.98)}
+  .mb-toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:rgba(0,0,0,.78);color:#fff;padding:8px 12px;border-radius:6px;font-size:13px;z-index:2147483647;opacity:0;transition:opacity .2s}
+  .mb-toast.show{opacity:1}
+</style>
+<div class="mb-toolbar" aria-label="工具栏" role="region">
+  <button id="mb-copy-btn" class="mb-btn" type="button" title="复制富文本内容">复制</button>
+</div>
+<script id="mb-copy-source" type="text/plain">${escapeForScript(copySource)}</script>
+<script>(function(){function toast(m){var t=document.createElement('div');t.className='mb-toast';t.textContent=m;document.body.appendChild(t);requestAnimationFrame(function(){t.classList.add('show')});setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove()},200);},1500)}function legacyCopy(txt){var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';ta.style.pointerEvents='none';ta.style.zIndex='-1';document.body.appendChild(ta);ta.focus();ta.select();try{var ok=document.execCommand('copy');toast(ok?'已复制到剪贴板':'复制失败');}catch(e){toast('复制失败');}document.body.removeChild(ta);}var btn=document.getElementById('mb-copy-btn');if(!btn)return;btn.addEventListener('click',async function(){var src=document.getElementById('mb-copy-source');var html=src?src.textContent:document.documentElement.outerHTML;try{if(navigator.clipboard&&navigator.clipboard.write){var blob=new Blob([html],{type:'text/html'});var item=new ClipboardItem({'text/html':blob});await navigator.clipboard.write([item]);toast('已复制富文本到剪贴板');}else if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(html);toast('已复制HTML文本到剪贴板');}else{legacyCopy(html)}}catch(e){legacyCopy(html)}});})();</script>
+<!-- mb-floating-toolbar end -->
+`;
+    // 插入到 </body> 之前
+    return html.replace('</body>', `${toolbarBlock}</body>`);
+  };
+
   if (inline) {
     try {
       // 在内联模式下，使用 juice 将样式下沉为元素的 style 属性，同时保留 <style> 标签中的伪元素、媒体查询等规则，便于完整页面渲染。
@@ -288,14 +312,15 @@ async function generateFullHtml(htmlContent, options) {
         extraCss: combinedStyles
       };
       const inlinedHtml = juice.inlineContent(baseHtml, combinedStyles, juiceOptions);
-      return inlinedHtml;
+      // 返回插入悬浮复制按钮后的HTML（复制源是未注入辅助元素的完整HTML，即 inlinedHtml 本身）
+      return injectToolbar(inlinedHtml, inlinedHtml);
     } catch (error) {
       logWarning(`Inlining failed, returning base HTML: ${error.message}`);
-      return baseHtml;
+      return injectToolbar(baseHtml, baseHtml);
     }
   }
   
-  return baseHtml;
+  return injectToolbar(baseHtml, baseHtml);
 }
 
 /**
