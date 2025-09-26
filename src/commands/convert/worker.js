@@ -22,6 +22,7 @@ import {
   logWarning,
   logInfo
 } from '../../utils/helpers.js';
+import { themeManager } from '../../utils/themeManager.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -204,40 +205,56 @@ async function generateFullHtml(htmlContent, options) {
   // 默认启用内联样式，除非明确指定--no-inline
   const inline = options.inline !== false && !options.noInline;
   
-  // 读取CSS文件 - 使用相对于当前模块的路径
-  const cssFiles = [
-    path.resolve(__dirname, '../../md-beautify.css'),
-    path.resolve(__dirname, '../../custom.css')
-  ];
-  
   let styles = '';
   
-  // 读取所有CSS文件内容
-  for (const cssFile of cssFiles) {
-    if (fileExists(cssFile)) {
+  if (theme === 'default') {
+    // 读取默认基础样式（md-beautify.css + custom.css）
+    const cssFiles = [
+      path.resolve(__dirname, '../../md-beautify.css'),
+      path.resolve(__dirname, '../../custom.css')
+    ];
+    for (const cssFile of cssFiles) {
+      if (fileExists(cssFile)) {
+        try {
+          const cssContent = fs.readFileSync(cssFile, 'utf8');
+          styles += cssContent + '\n';
+        } catch (error) {
+          logWarning(`Could not read CSS file ${cssFile}: ${error.message}`);
+        }
+      }
+    }
+  } else {
+    // 非 default 主题，使用主题管理器加载主题 CSS（已自动合并 custom.css）
+    try {
+      styles = themeManager.getThemeCSS(theme);
+    } catch (error) {
+      logWarning(`Could not load theme CSS: ${error.message}`);
+      // 回退到默认基础样式
       try {
-        const cssContent = fs.readFileSync(cssFile, 'utf8');
-        styles += cssContent + '\n';
-      } catch (error) {
-        logWarning(`Could not read CSS file ${cssFile}: ${error.message}`);
+        const fallbackDefault = fs.readFileSync(path.resolve(__dirname, '../../md-beautify.css'), 'utf8');
+        const fallbackCustom = fs.readFileSync(path.resolve(__dirname, '../../custom.css'), 'utf8');
+        styles = `${fallbackDefault}\n${fallbackCustom}`;
+      } catch (fallbackError) {
+        logWarning(`Could not load default styles: ${fallbackError.message}`);
       }
     }
   }
   
-  // 添加highlight.js样式 - 使用相对于当前模块的路径
+  // 添加 highlight.js 样式，提升选择器优先级（作用域到 .md-beautify）
+  let highlightCssScoped = '';
   const highlightCssPath = path.resolve(__dirname, '../../../node_modules/highlight.js/styles/github-dark.css');
   if (fileExists(highlightCssPath)) {
     try {
       const highlightCss = fs.readFileSync(highlightCssPath, 'utf8');
-      styles += highlightCss + '\n';
+      highlightCssScoped = scopeCssToMdBeautify(highlightCss) + '\n';
     } catch (error) {
       logWarning(`Could not read highlight.js CSS: ${error.message}`);
     }
   }
   
+  const combinedStyles = styles + highlightCssScoped;
   const timestamp = new Date().toISOString();
   
-  // 构建基础HTML
   const baseHtml = `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -246,8 +263,7 @@ async function generateFullHtml(htmlContent, options) {
   <title>Markdown Beautiful</title>
   <meta name="generator" content="md-beautify">
   <meta name="created" content="${timestamp}">
-  ${inline ? '' : generateExternalCssLinks()}
-  ${inline ? `<style>${styles}</style>` : ''}
+  ${`<style>${combinedStyles}</style>`}
 </head>
 <body>
   <div id="writing-content" class="writing-content" style="max-width:677px;margin:0 auto;padding-bottom:20px;">
@@ -258,13 +274,23 @@ async function generateFullHtml(htmlContent, options) {
 </body>
 </html>`;
 
-  if (inline && styles) {
+  if (inline) {
     try {
-      // 使用juice进行CSS内联
-      const inlinedHtml = juice(baseHtml);
+      // 在内联模式下，使用 juice 将样式下沉为元素的 style 属性，同时保留 <style> 标签中的伪元素、媒体查询等规则，便于完整页面渲染。
+      const juiceOptions = {
+        applyStyleTags: true,
+        removeStyleTags: false, // 保留 <style>，以便伪元素和复杂选择器仍可生效
+        preserveMediaQueries: true,
+        preserveFontFaces: true,
+        preserveKeyFrames: true,
+        preservePseudos: true, // 保留 ::before/::after 等伪元素规则
+        insertPreservedExtraCss: true,
+        extraCss: combinedStyles
+      };
+      const inlinedHtml = juice.inlineContent(baseHtml, combinedStyles, juiceOptions);
       return inlinedHtml;
     } catch (error) {
-      logWarning(`CSS inlining failed, falling back to embedded styles: ${error.message}`);
+      logWarning(`Inlining failed, returning base HTML: ${error.message}`);
       return baseHtml;
     }
   }
@@ -276,38 +302,56 @@ async function generateFullHtml(htmlContent, options) {
  * 生成外部CSS链接（当不使用内联样式时）
  * @returns {string}
  */
-function generateExternalCssLinks() {
-  // 注意：这里使用相对路径，假设CSS文件会被复制到输出目录
-  return `
-  <link rel="stylesheet" href="md-beautify.css">
-  <link rel="stylesheet" href="custom.css">
-  <link rel="stylesheet" href="highlight.css">
-  `;
+function generateExternalCssLinks(theme) {
+  // 非内联模式下，根据主题生成正确的外链
+  if (theme && theme !== 'default') {
+    return `\n  <link rel="stylesheet" href="theme.css">\n  <link rel="stylesheet" href="highlight.css">\n  `;
+  }
+  return `\n  <link rel="stylesheet" href="md-beautify.css">\n  <link rel="stylesheet" href="custom.css">\n  <link rel="stylesheet" href="highlight.css">\n  `;
 }
 
 /**
  * 复制CSS文件到输出目录（当不使用内联样式时）
  * @param {string} outputDir 
  */
-function copyCssFiles(outputDir) {
-  const cssFiles = [
-    { src: path.resolve(__dirname, '../../md-beautify.css'), dest: 'md-beautify.css' },
-    { src: path.resolve(__dirname, '../../custom.css'), dest: 'custom.css' },
-    { src: path.resolve(__dirname, '../../../node_modules/highlight.js/styles/github-dark.css'), dest: 'highlight.css' }
-  ];
-  
-  cssFiles.forEach(({ src, dest }) => {
-    const srcPath = src;
-    const destPath = path.join(outputDir, dest);
-    
-    if (fileExists(srcPath)) {
-      try {
-        fs.copyFileSync(srcPath, destPath);
-      } catch (error) {
-        logWarning(`Failed to copy ${src}: ${error.message}`);
-      }
+function copyCssFiles(outputDir, theme) {
+  // 根据主题复制/写入 CSS 文件到输出目录
+  ensureDir(outputDir);
+  if (theme && theme !== 'default') {
+    // 写入主题 CSS（包含 custom.css）
+    try {
+      const themeCss = themeManager.getThemeCSS(theme);
+      fs.writeFileSync(path.join(outputDir, 'theme.css'), themeCss, 'utf8');
+    } catch (error) {
+      logWarning(`Failed to write theme.css: ${error.message}`);
     }
-  });
+  } else {
+    // 复制默认样式
+    const cssFiles = [
+      { src: path.resolve(__dirname, '../../md-beautify.css'), dest: 'md-beautify.css' },
+      { src: path.resolve(__dirname, '../../custom.css'), dest: 'custom.css' }
+    ];
+    cssFiles.forEach(({ src, dest }) => {
+      if (fileExists(src)) {
+        try {
+          fs.copyFileSync(src, path.join(outputDir, dest));
+        } catch (error) {
+          logWarning(`Failed to copy ${src}: ${error.message}`);
+        }
+      }
+    });
+  }
+  // 写入作用域后的 highlight.css（所有主题通用）
+  const hlSrc = path.resolve(__dirname, '../../../node_modules/highlight.js/styles/github-dark.css');
+  if (fileExists(hlSrc)) {
+    try {
+      const css = fs.readFileSync(hlSrc, 'utf8');
+      const scopedCss = scopeCssToMdBeautify(css);
+      fs.writeFileSync(path.join(outputDir, 'highlight.css'), scopedCss, 'utf8');
+    } catch (error) {
+      logWarning(`Failed to copy highlight.css: ${error.message}`);
+    }
+  }
 }
 
 /**
@@ -356,27 +400,16 @@ function getOutputPath(inputFile, options) {
   if (options.output) {
     const fullPath = path.resolve(options.output);
     const parsed = path.parse(fullPath);
-    
-    // 极简逻辑：有扩展名就是文件，否则就是目录
     if (parsed.ext) {
-      // 是文件，直接使用
       const outputDir = path.dirname(fullPath);
-      if (options.inline === false) {
-        copyCssFiles(outputDir);
-      }
+      // 非内联模式下不再复制CSS文件，统一通过 <style> 内嵌样式
       return fullPath;
     } else {
-      // 是目录，创建目录并生成默认文件名
       ensureDir(fullPath);
       const noTimestamp = options.timestamp === false;
-      const filename = noTimestamp 
-        ? `${inputName}.html`
-        : generateTimestampFilename(inputName);
+      const filename = noTimestamp ? `${inputName}.html` : generateTimestampFilename(inputName);
       const finalPath = path.join(fullPath, filename);
-      
-      if (options.inline === false) {
-        copyCssFiles(fullPath);
-      }
+      // 非内联模式下不再复制CSS文件，统一通过 <style> 内嵌样式
       return finalPath;
     }
   }
@@ -384,13 +417,7 @@ function getOutputPath(inputFile, options) {
   // 如果指定了输出目录（兼容参数）
   if (options.outputDir) {
     ensureDir(options.outputDir);
-    
-    // 如果不使用内联样式，复制CSS文件到输出目录
-    if (options.inline === false) {
-      copyCssFiles(options.outputDir);
-    }
-    
-    // commander.js 将 --no-timestamp 转换为 options.timestamp = false
+    // 非内联模式下不再复制CSS文件，统一通过 <style> 内嵌样式
     const noTimestamp = options.timestamp === false;
     const filename = noTimestamp 
       ? `${inputName}.html`
@@ -405,7 +432,9 @@ function getOutputPath(inputFile, options) {
     ? `${inputName}.html`
     : generateTimestampFilename(inputName);
 
-  return path.join(inputDir, filename);
+  const finalDefaultPath = path.join(inputDir, filename);
+  // 非内联模式下不再复制CSS文件，统一通过 <style> 内嵌样式
+  return finalDefaultPath;
 }
 
 /**
@@ -451,4 +480,36 @@ async function watchFiles(files, options) {
     watcher.close();
     process.exit(0);
   });
+}
+
+// 轻量级 CSS 作用域工具：将顶层选择器前缀为 .md-beautify
+function scopeCssToMdBeautify(css) {
+  try {
+    let out = '';
+    const parts = css.split('}');
+    for (let part of parts) {
+      if (!part.trim()) continue;
+      const seg = part.split('{');
+      if (seg.length < 2) continue;
+      const selector = seg[0].trim();
+      const body = seg.slice(1).join('{');
+      // 忽略 @font-face、@keyframes 等 at-rule
+      if (selector.startsWith('@')) {
+        out += selector + '{' + body + '}\n';
+        continue;
+      }
+      // 多选择器逗号分隔处理
+      const prefixed = selector
+        .split(',')
+        .map(s => s.trim())
+        .filter(s => s.length)
+        .map(s => `.md-beautify ${s}`)
+        .join(', ');
+      out += `${prefixed}{${body}}\n`;
+    }
+    return out;
+  } catch (e) {
+    // 兜底：原样返回
+    return css;
+  }
 }
