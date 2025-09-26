@@ -39,6 +39,16 @@ Thumbs.db
 *.swp
 *.swo
 
+.trae
+.lingma
+.kiro
+.qoder
+.codebuddy
+cursor/
+.cursor/
+.cursorignore
+.cursorrules
+
 # Environment variables
 .env
 .env.local
