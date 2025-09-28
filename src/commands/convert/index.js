@@ -19,7 +19,7 @@ export default {
     ['-o, --output <output>', 'Output file path (default: same name with .html extension)'],
     ['-t, --theme <theme>', 'Theme name (github, default, custom)', 'default'],
     ['-inline, --inline', 'Generate HTML with inline styles for easy copying'],
-    ['--no-inline', 'Generate HTML with external CSS files'],
+    ['--no-inline', 'Generate HTML with external CSS files or styles tags'],
     ['-c, --copy', 'Copy result to clipboard', false],
     ['-w, --watch', 'Watch file changes and auto-convert', false],
     ['-d, --output-dir <dir>', 'Output directory for batch conversion'],

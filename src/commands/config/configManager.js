@@ -12,7 +12,7 @@ const CONFIG_FILE = path.join(CONFIG_DIR, 'config.json');
 const DEFAULT_CONFIG = {
   theme: 'default',
   outputDir: null,
-  inline: false,
+  inline: true,
   timestamp: true,
   autoOpen: false,
   watchMode: false,
