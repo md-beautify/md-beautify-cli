@@ -9,6 +9,7 @@ import chokidar from 'chokidar';
 import juice from 'juice';
 import { markdownParser } from '../../md.mjs';
 import { readConfig } from '../config/configManager.js';
+import { createRequire } from 'module';
 import { 
   fileExists, 
   dirExists, 
@@ -26,6 +27,7 @@ import { themeManager } from '../../utils/themeManager.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const require = createRequire(import.meta.url);
 
 /**
  * 转换命令的工作函数
@@ -242,14 +244,17 @@ async function generateFullHtml(htmlContent, options) {
   
   // 添加 highlight.js 样式，提升选择器优先级（作用域到 .md-beautify）
   let highlightCssScoped = '';
-  const highlightCssPath = path.resolve(__dirname, '../../../node_modules/highlight.js/styles/github-dark.css');
-  if (fileExists(highlightCssPath)) {
+  // 修改：通过 require.resolve 解析 highlight.js 样式文件路径，避免硬编码 node_modules 相对路径
+  const highlightCssPath = resolveHighlightCss('github-dark.css');
+  if (highlightCssPath && fileExists(highlightCssPath)) {
     try {
       const highlightCss = fs.readFileSync(highlightCssPath, 'utf8');
       highlightCssScoped = scopeCssToMdBeautify(highlightCss) + '\n';
     } catch (error) {
       logWarning(`Could not read highlight.js CSS: ${error.message}`);
     }
+  } else {
+    logWarning('highlight.js CSS not found, code highlight styles may be missing');
   }
   
   const combinedStyles = styles + highlightCssScoped;
@@ -370,8 +375,9 @@ function copyCssFiles(outputDir, theme) {
     });
   }
   // 写入作用域后的 highlight.css（所有主题通用）
-  const hlSrc = path.resolve(__dirname, '../../../node_modules/highlight.js/styles/github-dark.css');
-  if (fileExists(hlSrc)) {
+  // 修改：同样使用动态解析路径而非硬编码
+  const hlSrc = resolveHighlightCss('github-dark.css');
+  if (hlSrc && fileExists(hlSrc)) {
     try {
       const css = fs.readFileSync(hlSrc, 'utf8');
       const scopedCss = scopeCssToMdBeautify(css);
@@ -379,6 +385,8 @@ function copyCssFiles(outputDir, theme) {
     } catch (error) {
       logWarning(`Failed to copy highlight.css: ${error.message}`);
     }
+  } else {
+    logWarning('Failed to locate highlight.css via module resolution');
   }
 }
 
@@ -540,4 +548,25 @@ function scopeCssToMdBeautify(css) {
     // 兜底：原样返回
     return css;
   }
+}
+
+// 新增：健壮解析 highlight.js 样式路径的工具函数
+function resolveHighlightCss(styleName = 'github-dark.css') {
+  const candidates = [];
+  try {
+    // 方式一：使用 require.resolve 按 Node 模块解析规则定位
+    const resolvedByRequire = require.resolve(`highlight.js/styles/${styleName}`);
+    candidates.push(resolvedByRequire);
+  } catch (_) {
+    // ignore
+  }
+  // 方式二：相对当前文件的项目结构（本地开发场景）
+  candidates.push(path.resolve(__dirname, '../../../node_modules/highlight.js/styles/', styleName));
+  // 方式三：相对当前工作目录（某些执行环境去重/提升依赖）
+  candidates.push(path.resolve(process.cwd(), 'node_modules/highlight.js/styles/', styleName));
+
+  for (const p of candidates) {
+    if (fileExists(p)) return p;
+  }
+  return null;
 }
