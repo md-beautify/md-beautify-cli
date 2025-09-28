@@ -100,7 +100,7 @@ md-beautify convert input.md -w -inline
 
 ```bash
 md-beautify convert <input> [options]
-md-beautify c <input> [options]  # 简写
+mdb c <input> [options]  # 简写
 ```
 
 **选项:**
@@ -325,6 +325,8 @@ md-beautify/
 ```
 
 ## 📋 使用场景
+
+一般情况下使用默认主题就可以了。
 
 ### 微信公众号发布
 
