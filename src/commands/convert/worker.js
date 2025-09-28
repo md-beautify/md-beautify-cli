@@ -300,18 +300,21 @@ async function generateFullHtml(htmlContent, options) {
 
   if (inline) {
     try {
-      // 在内联模式下，使用 juice 将样式下沉为元素的 style 属性，同时保留 <style> 标签中的伪元素、媒体查询等规则，便于完整页面渲染。
+      // 使用juice的标准方法而不是inlineContent，避免样式重复
       const juiceOptions = {
-        applyStyleTags: true,
-        removeStyleTags: false, // 保留 <style>，以便伪元素和复杂选择器仍可生效
-        preserveMediaQueries: true,
-        preserveFontFaces: true,
-        preserveKeyFrames: true,
-        preservePseudos: true, // 保留 ::before/::after 等伪元素规则
-        insertPreservedExtraCss: true,
-        extraCss: combinedStyles
+        applyStyleTags: true,     // 处理文档中的<style>标签内的CSS规则
+        removeStyleTags: true,    // 处理完后移除所有原始<style>标签
+        preserveMediaQueries: false,  // 不保留媒体查询规则
+        preserveFontFaces: false,     // 不保留字体规则
+        preserveKeyFrames: false,     // 不保留关键帧动画规则
+        preservePseudos: false,       // 不保留伪元素规则
+        inlinePseudoElements: true,   // 将伪元素转换为实际的DOM元素
+        insertPreservedExtraCss: false, // 不插入任何额外的CSS
+        resolveCSSVariables: true     // 解析CSS变量
       };
-      const inlinedHtml = juice.inlineContent(baseHtml, combinedStyles, juiceOptions);
+
+      // baseHtml已经包含了样式，直接使用juice处理即可
+      const inlinedHtml = juice(baseHtml, juiceOptions);
       // 返回插入悬浮复制按钮后的HTML（复制源是未注入辅助元素的完整HTML，即 inlinedHtml 本身）
       return injectToolbar(inlinedHtml, inlinedHtml);
     } catch (error) {
