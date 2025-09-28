@@ -190,7 +190,7 @@ md-beautify theme preview github -o preview.html
 {
   "theme": "default",
   "outputDir": null,
-  "inline": false,
+  "inline": true,
   "timestamp": true,
   "autoOpen": false,
   "watchMode": false,
