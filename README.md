@@ -76,10 +76,10 @@ md-beautify convert article.md -o article.html
 md-beautify convert article.md -d output/
 
 # ✅ 批量文件转换 - 正确用法
-md-beautify "convert *.md" -d output/
+md-beautify convert "*.md" -d output/
 
 # ❌ 批量文件转换 - 错误用法（会报错退出）
-md-beautify "convert *.md" -o output.html
+md-beautify convert "*.md" -o output.html
 ```
 
 ### 实时监听
