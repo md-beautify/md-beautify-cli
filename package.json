@@ -4,8 +4,8 @@
   "description": "Convert Markdown files to beautiful HTML with inline styles",
   "main": "src/main.js",
   "bin": {
-    "md-beautify": "./bin/cli.js",
-    "mdb": "./bin/cli.js"
+    "md-beautify": "bin/cli.js",
+    "mdb": "bin/cli.js"
   },
   "type": "module",
   "files": [
@@ -19,9 +19,9 @@
   "scripts": {
     "start": "node bin/cli.js",
     "dev": "node bin/cli.js convert example/markdown.md -i",
-    "test:convert": "node bin/cli.js convert example/markdown.md -o test-output.html",
-    "test:batch": "node bin/cli.js convert example/*.md -d output/",
-    "test:watch": "node bin/cli.js convert example/markdown.md -w",
+    "test:convert": "node bin/cli.js convert examples/markdown.md -o test-output.html",
+    "test:batch": "node bin/cli.js convert examples/*.md -d output/",
+    "test:watch": "node bin/cli.js convert examples/markdown.md -w",
     "build": "echo 'No build step required'",
     "prepublishOnly": "npm run test:convert"
   },
@@ -46,7 +46,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/md-beautify/md-beautify-cli"
+    "url": "git+https://github.com/md-beautify/md-beautify-cli.git"
   },
   "bugs": {
     "url": "https://github.com/md-beautify/md-beautify-cli/issues"
