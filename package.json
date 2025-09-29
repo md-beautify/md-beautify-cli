@@ -19,7 +19,7 @@
   "scripts": {
     "start": "node bin/cli.js",
     "dev": "node bin/cli.js convert example/markdown.md -i",
-    "test:convert": "node bin/cli.js convert examples/markdown.md -o test-output.html",
+    "test:convert": "node bin/cli.js convert examples/markdown.md -o output/test-output.html",
     "test:batch": "node bin/cli.js convert examples/*.md -d output/",
     "test:watch": "node bin/cli.js convert examples/markdown.md -w",
     "build": "echo 'No build step required'",
