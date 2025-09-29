@@ -1,6 +1,6 @@
 {
   "name": "md-beautify",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Convert Markdown files to beautiful HTML with inline styles",
   "main": "src/main.js",
   "bin": {
