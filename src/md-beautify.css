@@ -690,7 +690,8 @@
   align-items: center;
 }
 
-.md-beautify figure img {
+.md-beautify figure img,
+.md-beautify p img {
   display: block;
   max-width: 100%;
   border-top-style: none;
